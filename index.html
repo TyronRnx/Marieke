@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour Marieke ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#fff0f5,#ffe4ec);
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    width:90%;
+    max-width:650px;
+    padding:40px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    color:#c44b78;
+    margin-bottom:30px;
+    line-height:1.4;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+button{
+    border:none;
+    padding:15px 35px;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:20px;
+    transition:.3s;
+}
+
+#yes{
+    background:#ff9ec3;
+    color:white;
+}
+
+#yes:hover{
+    transform:scale(1.08);
+}
+
+#no{
+    background:#d8c1ff;
+    color:#694a8d;
+}
+
+.result img{
+    width:260px;
+    max-width:100%;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.result h2{
+    margin-top:20px;
+}
+
+.heart{
+    position:absolute;
+    animation:float 8s linear infinite;
+    opacity:0.6;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+</style>
+</head>
+<body>
+
+<div id="hearts"></div>
+
+<div class="card" id="card">
+
+    <h1>
+        🌸 Marieke,<br>
+        veux-tu aller en date avec moi ? 🌸
+    </h1>
+
+    <div class="buttons">
+        <button id="yes">Oui 💖</button>
+        <button id="no">Non 🙈</button>
+    </div>
+
+</div>
+
+<script>
+
+const card = document.getElementById("card");
+
+document.getElementById("yes").onclick = () => {
+    card.innerHTML = `
+        <h1>💖 INCROYABLE 💖</h1>
+
+        <div class="result">
+            <img src="chat.png" alt="chat">
+            <h2 style="color:#c44b78;">
+                Trop hâte de notre date ❤️
+            </h2>
+        </div>
+    `;
+};
+
+document.getElementById("no").onclick = () => {
+    card.innerHTML = `
+        <h1>💔 OH NON 💔</h1>
+
+        <div class="result">
+            <img src="non.png" alt="non">
+            <h2 style="color:#694a8d;">
+                Je vais te couper la bite 😡✂️
+            </h2>
+        </div>
+    `;
+};
+
+// Coeurs flottants
+const hearts = document.getElementById("hearts");
+
+for(let i=0;i<25;i++){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (20 + Math.random()*30) + "px";
+    heart.style.animationDuration = (5 + Math.random()*8) + "s";
+    heart.style.animationDelay = Math.random()*5 + "s";
+    hearts.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
