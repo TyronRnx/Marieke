@@ -10,7 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -29,7 +29,7 @@ body{
     padding:40px;
     border-radius:30px;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
     position:relative;
     z-index:2;
 }
@@ -44,6 +44,7 @@ h1{
     display:flex;
     justify-content:center;
     gap:20px;
+    flex-wrap:wrap;
 }
 
 button{
@@ -52,16 +53,11 @@ button{
     border-radius:999px;
     cursor:pointer;
     font-size:20px;
-    transition:.3s;
 }
 
 #yes{
     background:#ff9ec3;
     color:white;
-}
-
-#yes:hover{
-    transform:scale(1.08);
 }
 
 #no{
@@ -83,7 +79,7 @@ button{
 .heart{
     position:absolute;
     animation:float 8s linear infinite;
-    opacity:0.6;
+    opacity:.6;
 }
 
 @keyframes float{
@@ -96,21 +92,22 @@ button{
 }
 </style>
 </head>
+
 <body>
 
 <div id="hearts"></div>
 
 <div class="card" id="card">
 
-    <h1>
-        🌸 Marieke,<br>
-        veux-tu aller en date avec moi ? 🌸
-    </h1>
+<h1>
+🌸 Marieke,<br>
+veux-tu aller en date avec moi ? 🌸
+</h1>
 
-    <div class="buttons">
-        <button id="yes">Oui 💖</button>
-        <button id="no">Non 🙈</button>
-    </div>
+<div class="buttons">
+<button id="yes">Oui 💖</button>
+<button id="no">Non 🙈</button>
+</div>
 
 </div>
 
@@ -119,43 +116,58 @@ button{
 const card = document.getElementById("card");
 
 document.getElementById("yes").onclick = () => {
-    card.innerHTML = `
-        <h1>💖 INCROYABLE 💖</h1>
 
-        <div class="result">
-            <img src="IMG_1071.jpeg" alt="chat">
-            <h2 style="color:#c44b78;">
-                Trop hâte de notre date ❤️
-            </h2>
-        </div>
-    `;
+card.innerHTML = `
+<h1>💖 INCROYABLE 💖</h1>
+
+<div class="result">
+<img src="IMG_1071.jpeg">
+
+<h2 style="color:#c44b78;">
+Trop hâte de notre date ❤️
+</h2>
+
+<p style="margin-top:15px;font-size:18px;">
+Clique sur le bouton ci-dessous pour m'envoyer ta réponse 💌
+</p>
+
+<br>
+
+<button onclick="window.location.href='sms:0766734708?body=Oui%20j%27accepte%20le%20date%20❤️'">
+Envoyer un SMS ❤️
+</button>
+
+</div>
+`;
 };
 
 document.getElementById("no").onclick = () => {
-    card.innerHTML = `
-        <h1>💔 OH NON 💔</h1>
 
-        <div class="result">
-            <img src="IMG_1072.jpeg" alt="non">
-            <h2 style="color:#694a8d;">
-                Je vais couper ton bite 😡✂️
-            </h2>
-        </div>
-    `;
+card.innerHTML = `
+<h1>💔 OH NON 💔</h1>
+
+<div class="result">
+<img src="IMG_1072.jpeg">
+
+<h2 style="color:#694a8d;">
+Vraiment ? 😭
+</h2>
+</div>
+`;
 };
 
 // Coeurs flottants
 const hearts = document.getElementById("hearts");
 
 for(let i=0;i<25;i++){
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.fontSize = (20 + Math.random()*30) + "px";
-    heart.style.animationDuration = (5 + Math.random()*8) + "s";
-    heart.style.animationDelay = Math.random()*5 + "s";
-    hearts.appendChild(heart);
+const heart = document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*30)+"px";
+heart.style.animationDuration=(5+Math.random()*8)+"s";
+heart.style.animationDelay=Math.random()*5+"s";
+hearts.appendChild(heart);
 }
 
 </script>
